@@ -3,7 +3,7 @@ export const getNumbers = () => {
     return(dispatch) =>{
         console.log("Getting all Basket Number");
         dispatch ({
-            types: GET_NUMBERS_BASKET //action types written in capital letters
+            type: GET_NUMBERS_BASKET //action types written in capital letters
         })
     }
 }

@@ -3,7 +3,7 @@ import smartphones from '../images/sim-negro.jpg';
 import smartphones1 from '../images/s20.jpg';
 
 import {connect} from 'react-redux';
-import addBasket from '../actions/addAction';
+import {addBasket} from '../actions/addAction';
 
 const items = [{name:'Samsung',price:480, desc:'samsung s10', image:smartphones},
 { name:'Nokia',price:530, desc:'Nokia N80', image:smartphones1},
@@ -11,16 +11,26 @@ const items = [{name:'Samsung',price:480, desc:'samsung s10', image:smartphones}
 {name:'OnePlus',price:350, desc:'sOnePlues 5', image:smartphones},
 ]
 
+/* const Home = () => {
+     C
+ }*/
 class Home extends React.Component{
+    
+    // eslint-disable-next-line no-useless-constructor
+   
+ handleClick = (product)=>{
+        console.log("Added ");
+        this.props.addPoduct(product);
+   }
     render(){
         return(
             <div className="container">
                 {items.map((item) =>(
-                    <div> 
+                    <div className="image"> 
                         <img src={item.image} alt={item.name} />
                         <h3>{item.name}</h3>
                         <h3>{item.price}</h3>
-                        <a onClick={()=>{this.handleClick(item)}} className="addToCart cart1" href="#">Add me to Cart</a>
+                        <a onClick={()=>this.handleClick(item)} className="addToCart cart1" href="#">Add me to Cart</a>
                     </div>
                 ))}
             </div>
@@ -28,8 +38,17 @@ class Home extends React.Component{
     }
 
 }
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        addPoduct:(product) => dispatch(addBasket(product)),
+    }
+}
 
-export default Home;
+const mapStateToProps = (state) =>({
+    basketCount:state.basketState.basketNumbers
+});
+
+export default connect (mapStateToProps, mapDispatchToProps) (Home);
 
 
 
