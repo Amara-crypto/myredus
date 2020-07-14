@@ -2,7 +2,21 @@ import {ADD_PRODUCT_BASKET,GET_NUMBERS_BASKET} from '../actions/types';
 const initialState = {
     basketNumbers:0,
     CartCost:0,
-    products:[]
+    addedItems:[],
+   products: []
+    /* 
+    },
+    Iphone:{
+        inCart:false,
+        price:400,
+        number:0
+    },
+    Oneplus:{
+        inCart:false,
+        price:350,
+        number:0
+    }
+    }*/
     
 }
 
@@ -14,7 +28,7 @@ export  default (state = initialState, actions) => {
         console.log(addQuantity)
         let new_products=[...state.products,actions.payload]
         return{
-            products: new_products,
+           products: new_products,
             basketNumbers: state.basketNumbers + 1
         }
     case GET_NUMBERS_BASKET:
