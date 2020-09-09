@@ -2,18 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeProduct } from "../actions/addAction";
+import { addBasket } from "../actions/addAction";
 class Cart extends React.Component {
-	//to remove the item completely
 	handleRemove = (item) => {
 		this.props.removeProduct({
 			id: item.id,
 		});
 	};
-	//to add the quantity
+
 	handleAddQuantity = (name) => {
 		this.props.addQuantity(name);
 	};
-	//to substruct from the quantity
+
 	handleSubtractQuantity = (name) => {
 		this.props.subtractQuantity(name);
 	};
@@ -65,6 +65,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
 	return {
+		addBasket: (item) => dispatch(addBasket(item)),
 		removeProduct: (item) => dispatch(removeProduct(item)),
 	};
 };
