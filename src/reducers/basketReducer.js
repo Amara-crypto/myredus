@@ -37,6 +37,7 @@ export default (state = initialState, actions) => {
 			let newCart = arrayRemove(state.products, actions.payload.id);
 			return {
 				product: newCart,
+				basketNumbers: sum(newCart),
 			};
 		default:
 			return state;
@@ -57,4 +58,7 @@ function check(array, item) {
 }
 function sum(products) {
 	return products.reduce((a, b) => a + (b["quantity"] || 0), 0);
+}
+function total(cart) {
+	return cart.reduce((a, b) => a + b["product"]["price"] * b["quantity"], 0);
 }
