@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeProduct } from "../actions/addAction";
 import { addBasket } from "../actions/addAction";
+import DeleteIcon from "@material-ui/icons/Delete";
+
 class Cart extends React.Component {
 	handleRemove = (item) => {
 		this.props.removeProduct({
