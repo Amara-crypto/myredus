@@ -47,6 +47,7 @@ class Cart extends React.Component {
 							<Link to='/cart'>
 								<i className='material-icons'>arrow_drop_down</i>
 							</Link>
+							<DeleteIcon onClick={() => this.handleRemove(item)} />
 							<button onclick={this.handleRemove(item)} className='Remove'>
 								Remove
 							</button>
